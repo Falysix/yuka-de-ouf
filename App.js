@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 const App = () => {
   const [productList, setProductList] = useState([]) 
 
-  addProduct = (product) => {
+  const addProduct = (product) => {
     let newList = [...productList];
     newList.push(product);
     setProductList(newList);
