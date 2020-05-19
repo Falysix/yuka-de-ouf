@@ -14,7 +14,7 @@ const App = () => {
     let newList = [...productList];
     newList.push(product);
     setProductList(newList);
-    console.log(product, productList);
+    console.log('add product', product, productList);
   }
 
   return (
@@ -22,7 +22,7 @@ const App = () => {
       <Tab.Navigator>
         <Tab.Screen name="Recherche" component={SearchScreen} />
         <Tab.Screen name='Scan'>
-          {() => <ScanScreen addProduct={() => addProduct} />}
+          {() => <ScanScreen addProduct={addProduct} />}
         </Tab.Screen>
         <Tab.Screen name='Mes produits'>
           {() => <ProductScreen productList={productList} />}
