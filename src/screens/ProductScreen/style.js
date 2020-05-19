@@ -6,8 +6,7 @@ export const style = StyleSheet.create({
     },
     item: {
         padding: 10,
-        fontSize: 18,
-        height: 44,
+        fontSize: 18
     },
     titleView: {
         height: '20%',
@@ -22,6 +21,7 @@ export const style = StyleSheet.create({
     },
     list: {
         width: '100%',
-        height: '30%'
+        height: '30%',
+        marginBottom: 15
     }
 });

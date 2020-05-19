@@ -6,16 +6,17 @@ import BarCodeScanner from '../../components/BarCodeScanner';
 const ScanScreen = (props) => {
     const  addProductFromBarCode = async (barcode) => {
         const { value } = barcode;
-        const url = 'https://world.openfoodfacts.org/api/v0/product/' + value + '.json'
+        const url = 'https://world.openfoodfacts.org/api/v0/product/' + value + '.json';
 
         try {
             const req = await fetch(url);
             if (req.ok) {
                 const apiProduct = await req.json() || {};
-                if (apiProduct.product.product_name_fr){
+                if (apiProduct.status == 1 && apiProduct.product.product_name_fr){
                     props.addProduct({
                         barcode: value,
-                        name: apiProduct.product.product_name_fr
+                        name: apiProduct.product.product_name_fr,
+                        infos: apiProduct.product
                     });
                     alert('Produit ajouté ! :D');
                 }
@@ -37,7 +38,7 @@ const ScanScreen = (props) => {
             <View style={style.titleView}>
                 <Text style={style.title}>Scanne ton produit !</Text>
             </View>
-            <View style={{flex: 2, width: '100%' }}>
+            <View style={{ flex: 2, width: '100%' }}>
                 <BarCodeScanner 
                     style={style.scanner} 
                     onScan={

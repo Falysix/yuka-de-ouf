@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import React from 'react';
+import { Text, View, FlatList, Image } from 'react-native';
 import { style } from './style';
+import ItemCard from '../../components/Item';
 
 const ProductScreen = (props) => {
 
@@ -10,10 +11,10 @@ const ProductScreen = (props) => {
         <Text style={style.title}>Tous tes produits !</Text>
       </View>
       <FlatList
-        data={props.productList}
+        data={props.productList.reverse()}
         keyExtractor={(item, index) => index.toString()}
         renderItem={
-          ({item}) => <Text style={style.item}>{item.name}</Text>
+          ({item}) => <ItemCard item={item} />
         }
         style={style.list}
       />
