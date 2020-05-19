@@ -15,7 +15,6 @@ const BarCodeScanner = (props) => {
 
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
     props.onScan({ value: data, type: type });
   };
 

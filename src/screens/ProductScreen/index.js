@@ -3,6 +3,7 @@ import { Text, View, FlatList } from 'react-native';
 import { style } from './style';
 
 const ProductScreen = (props) => {
+
   return (
     <View style={style.container}>
       <View style={style.titleView}>
@@ -12,7 +13,7 @@ const ProductScreen = (props) => {
         data={props.productList}
         keyExtractor={(item, index) => index.toString()}
         renderItem={
-          ({item}) => <Text style={style.item}>{item.name} : {item.barcode}</Text>
+          ({item}) => <Text style={style.item}>{item.name}</Text>
         }
         style={style.list}
       />

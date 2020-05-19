@@ -14,7 +14,6 @@ const App = () => {
     let newList = [...productList];
     newList.push(product);
     setProductList(newList);
-    console.log('add product', product, productList);
   }
 
   return (

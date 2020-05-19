@@ -5,22 +5,27 @@ import BarCodeScanner from '../../components/BarCodeScanner';
 
 const ScanScreen = (props) => {
     const  addProductFromBarCode = async (barcode) => {
-        console.log(barcode);
-        const { value, type } = barcode;
-        const apikey = '9DECAB516027D09660263CEB72080975';
-        const url = 'https://api.upcdatabase.org/product/' + value + '?apikey=' + apikey;
+        const { value } = barcode;
+        const url = 'https://world.openfoodfacts.org/api/v0/product/' + value + '.json'
 
         try {
             const req = await fetch(url);
             if (req.ok) {
-                const product = await req.json() || {};
-                console.log(JSON.stringify(product));
-                props.addProduct({ 
-                    barcode: product.barcode,
-                    name: product.description
-                })
+                const apiProduct = await req.json() || {};
+                if (apiProduct.product.product_name_fr){
+                    props.addProduct({
+                        barcode: value,
+                        name: apiProduct.product.product_name_fr
+                    });
+                    alert('Produit ajouté ! :D');
+                }
+                else {
+                    alert('Produit inconnu');
+                    throw Error("Product not found", url);
+                }
             } 
             else {
+                alert('Erreur de connexion');
                 throw Error("Not 200");
             }
         } catch (err) {
