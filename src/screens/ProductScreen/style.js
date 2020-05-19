@@ -4,10 +4,6 @@ export const style = StyleSheet.create({
     container: {
         flex: 1
     },
-    item: {
-        padding: 10,
-        fontSize: 18
-    },
     titleView: {
         height: '20%',
         width: '100%', 
@@ -21,7 +17,6 @@ export const style = StyleSheet.create({
     },
     list: {
         width: '100%',
-        height: '30%',
         marginBottom: 15
     }
 });

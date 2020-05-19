@@ -1,9 +1,11 @@
 import React from 'react';
-import { Text, View, FlatList, Image } from 'react-native';
+import { Text, View, FlatList } from 'react-native';
 import { style } from './style';
-import ItemCard from '../../components/Item';
+import ItemCard from '../../components/ItemCard';
 
 const ProductScreen = (props) => {
+
+  const products = props.productList.reverse();
 
   return (
     <View style={style.container}>
@@ -11,7 +13,7 @@ const ProductScreen = (props) => {
         <Text style={style.title}>Tous tes produits !</Text>
       </View>
       <FlatList
-        data={props.productList.reverse()}
+        data={products.reverse()}
         keyExtractor={(item, index) => index.toString()}
         renderItem={
           ({item}) => <ItemCard item={item} />

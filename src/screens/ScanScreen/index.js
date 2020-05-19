@@ -4,6 +4,7 @@ import { style } from './style';
 import BarCodeScanner from '../../components/BarCodeScanner';
 
 const ScanScreen = (props) => {
+    
     const  addProductFromBarCode = async (barcode) => {
         const { value } = barcode;
         const url = 'https://world.openfoodfacts.org/api/v0/product/' + value + '.json';

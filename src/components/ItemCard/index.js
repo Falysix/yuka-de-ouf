@@ -5,13 +5,12 @@ import { Card } from 'react-native-elements';
 const ItemCard = (props) => {
     const { item } = props;
     return(
-
         <Card title={item.name}>
             <View style={{ flexDirection:'row', flexWrap: 'wrap' }}>
                 { item.infos && item.infos.image_front_url ?
                 <Image
                     source={{
-                    uri: item.infos.image_front_url
+                        uri: item.infos.image_front_url
                     }}
                     style={{
                     width: 80,
